@@ -1,0 +1,56 @@
+>> load('1372.mat')
+>> img=cjdata.image;
+>> imshow(img);
+Warning: MATLAB previously crashed due to a low-level graphics error. To prevent another crash in this
+session, MATLAB is using software OpenGL instead of using your graphics hardware. To save this setting
+for future sessions, use the opengl('save', 'software') command. For more information, see Resolving
+Low-Level Graphics Issues. 
+> In matlab.graphics.internal.initialize (line 15) 
+
+>> adj=imadjust(img);
+>> figure,imshow(adj);
+>> bord=cjdata.tumorBorder;
+>> figure,imshow(bord);
+>> msk=cjdata.tumorMask;
+>> figure,imshow(msk);
+>> his=imhist(img);
+>> sum=sum(his);
+>> his_norm=his/sum;
+>> his_log=log2(his_norm);
+>> entropy=his_norm.*his_log;
+>> glcm=graycomatrix(img);
+>> figure,imagesc(glcm);
+>> cc=sum(glcm);
+Array indices must be positive integers or logical values.
+
+'sum' appears to be both a function and a variable. If this is unintentional, use 'clear sum' to remove
+the variable 'sum' from the workspace.
+ 
+>> csum=sum(graycomatrix(img));
+Array indices must be positive integers or logical values.
+ 
+>> csum=sum(sum(graycomatrix(img)));
+Array indices must be positive integers or logical values.
+ 
+>> cc=sum(glcm);
+Array indices must be positive integers or logical values.
+
+'sum' appears to be both a function and a variable. If this is unintentional, use 'clear sum' to remove
+the variable 'sum' from the workspace.
+ 
+>> sum1=sum(his);
+Array indices must be positive integers or logical values.
+
+'sum' appears to be both a function and a variable. If this is unintentional, use 'clear sum' to remove
+the variable 'sum' from the workspace.
+ 
+>> clear sum
+>> sum1=sum(his);
+>> cc=sum(glcm);
+>> figure,imagesc(cc);
+>> figure,imagesc(graycomatrix(cc));
+>> figure,imagesc(graycomatrix(img));
+>> mat=@(img)sqrt(mat(img.^2));
+>> last=histeq(img);
+>> figure,imshow(last);
+>> 
